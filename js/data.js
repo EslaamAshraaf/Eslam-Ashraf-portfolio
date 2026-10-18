@@ -1,6 +1,6 @@
-/* Project data — edit this file to update the cards on the home page AND the project details screens.
-   Replace each "#" in `links` with your real Google Play / App Store URL.
-   `icon` is the app icon shown on the home page (hero + cards), `cover` the app screen used on project pages, `images` the Screenshots section. */
+/* Project data — edit this file to update the cards on the home page AND the case-study modals.
+   Replace each "#" in `links` with your real Google Play / App Store / GitHub repository URL.
+   `icon` is the app icon shown on the home page (hero + cards), `cover` the app screen used on cards & case studies, `images` the screenshot carousel. */
 window.PROJECTS = [
   {
     id: 'farrah-now', name: 'Farrah now', kind: 'Social travel', emoji: '📍', g: 'g1',
@@ -27,7 +27,7 @@ window.PROJECTS = [
       'Device APIs': ['Camera', 'Microphone', 'Photo Library'],
       'Messaging': ['Firebase Cloud Messaging']
     },
-    links: { play: '#', store: '#' }
+    links: { play: '#', store: '#', repo: '#' }
   },
   {
     id: 'mv-limousine', name: 'MV Limousine', kind: 'Car rental', emoji: '🚘', g: 'g2',
@@ -54,7 +54,7 @@ window.PROJECTS = [
       'Maps & places': ['Google Maps SDK', 'Google Places SDK'],
       'Messaging': ['Firebase Cloud Messaging']
     },
-    links: { play: '#', store: '#' }
+    links: { play: '#', store: '#', repo: '#' }
   },
   {
     id: 'babytrack', name: 'BabyTrack', kind: 'Baby care · On-device AI', emoji: '👶', g: 'g3',
@@ -83,7 +83,7 @@ window.PROJECTS = [
       'UI & charts': ['Liquid Glass UI', 'fl_chart', 'Arabic/English RTL', 'Light & dark themes'],
       'Security & messaging': ['flutter_secure_storage', 'Firebase Cloud Messaging']
     },
-    links: { play: '#', store: '#' }
+    links: { play: '#', store: '#', repo: '#' }
   },
   {
     id: 'foteek', name: 'Foteek', kind: 'E-commerce · Footwear', emoji: '👟', g: 'g4',
@@ -108,7 +108,7 @@ window.PROJECTS = [
       'UI': ['Search & brand filters', 'Product grids & cards', 'Cart & wishlist'],
       'Flows': ['Order history', 'Order status tracking', 'Notifications']
     },
-    links: { play: '#', store: '#' }
+    links: { play: '#', store: '#', repo: '#' }
   },
   {
     id: 'rbcs', name: 'RBCS', kind: 'E-learning · Medical', emoji: '🩺', g: 'g5',
@@ -133,7 +133,7 @@ window.PROJECTS = [
       'UI': ['Category carousels', 'Video previews', 'Tabbed class detail'],
       'Flows': ['Search & filters', 'Favourites', 'Mentor profiles']
     },
-    links: { play: '#', store: '#' }
+    links: { play: '#', store: '#', repo: '#' }
   },
   {
     id: 'gobite', name: 'GoBite', kind: 'Food delivery · RTL', emoji: '🍔', g: 'g6',
@@ -159,6 +159,6 @@ window.PROJECTS = [
       'UI': ['Menu grids', 'Cart & checkout', 'Offers & banners'],
       'Flows': ['Restaurant list', 'Order history', 'Favourites']
     },
-    links: { play: '#', store: '#' }
+    links: { play: '#', store: '#', repo: '#' }
   }
 ];
