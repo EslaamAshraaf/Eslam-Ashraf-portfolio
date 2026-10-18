@@ -12,6 +12,12 @@
     if (src) return '<div class="phone"><div class="scr shot ' + p.g + '"><img src="' + src + '" alt="' + esc(p.name) + ' screenshot" loading="lazy"></div></div>';
     return '<div class="phone"><div class="scr ' + p.g + '">' + p.emoji + '<i></i><i></i></div></div>';
   }
+  function launch(p) {
+    if (!p.icon) return phone(p);
+    return '<div class="phone"><div class="scr ' + p.g + ' launch">' +
+      '<img src="' + p.icon + '" alt="' + esc(p.name) + ' app icon">' +
+      '<b>' + esc(p.name) + '</b><span>' + esc(p.kind) + '</span></div></div>';
+  }
   function gallery(p) {
     if (!p.images || !p.images.length) return '';
     return '<section><div class="w rv"><h2>Screenshots.</h2><div class="shots">' +
@@ -27,7 +33,7 @@
       '<p class="d">' + esc(p.summary) + '</p><ul>' + p.highlights.map(function (h) { return '<li>' + esc(h) + '</li>'; }).join('') + '</ul>' +
       '<div class="chips">' + p.chips.map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>' +
       '<div class="links"><a class="btn" href="#/project/' + p.id + '">View details</a>' + a(p.links.play, 'lnk', 'Google Play') + a(p.links.store, 'lnk', 'App Store') + '</div></div>' +
-      '<div class="vis">' + phone(p) + '</div></article>';
+      '<div class="vis">' + launch(p) + '</div></article>';
   }
 
   function detail(p) {
