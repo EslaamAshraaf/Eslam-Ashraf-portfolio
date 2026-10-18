@@ -7,7 +7,20 @@
   }, { threshold: .08 }) : null;
   function obs(r) { r.querySelectorAll('.rv').forEach(function (x) { io ? io.observe(x) : x.classList.add('in'); }); }
   function a(h, c, t) { return '<a class="' + c + '" href="' + h + '"' + (h === '#' ? '' : ' target="_blank" rel="noopener"') + '>' + t + '</a>'; }
-  function phone(p) { return '<div class="phone"><div class="scr ' + p.g + '">' + p.emoji + '<i></i><i></i></div></div>'; }
+  function phone(p, i) {
+    var src = p.images && p.images[i || 0];
+    if (src) return '<div class="phone"><div class="scr shot ' + p.g + '"><img src="' + src + '" alt="' + esc(p.name) + ' screenshot" loading="lazy"></div></div>';
+    return '<div class="phone"><div class="scr ' + p.g + '">' + p.emoji + '<i></i><i></i></div></div>';
+  }
+  function gallery(p) {
+    if (!p.images || !p.images.length) return '';
+    return '<section><div class="w rv"><h2>Screenshots.</h2><div class="shots">' +
+      p.images.map(function (src, i) {
+        return '<button class="shot-btn" data-full="' + src + '" data-alt="' + esc(p.name) + ' — screen ' + (i + 1) + '" aria-label="Enlarge ' + esc(p.name) + ' screen ' + (i + 1) + '">' +
+          '<img src="' + src + '" alt="' + esc(p.name) + ' screen ' + (i + 1) + '" loading="lazy"></button>';
+      }).join('') + '</div></div></section>';
+
+  }
 
   function card(p) {
     return '<article class="card rv"><div><p class="kick">' + esc(p.kind) + '</p><h3>' + esc(p.name) + '</h3>' +
@@ -25,6 +38,7 @@
       '<div class="vis">' + phone(p) + '</div></div></section>' +
       '<section class="facts"><div class="w rv">' + p.facts.map(function (f) { return '<div><small>' + esc(f[0]) + '</small><b>' + esc(f[1]) + '</b></div>'; }).join('') + '</div></section>' +
       '<section><div class="w rv"><h2>Overview.</h2><p class="about">' + esc(p.overview) + '</p></div></section>' +
+      gallery(p) +
       '<section class="alt"><div class="w rv"><h2>Key features.</h2><div class="tiles">' +
       p.features.map(function (f) { return '<div class="tile"><h4>' + esc(f[0]) + '</h4><p>' + esc(f[1]) + '</p></div>'; }).join('') + '</div></div></section>' +
       '<section><div class="w rv"><h2>Technology used.</h2>' +
@@ -51,5 +65,19 @@
   addEventListener('hashchange', route);
   addEventListener('scroll', function () { nav.classList.toggle('sc', scrollY > 8); }, { passive: true });
   document.getElementById('y').textContent = new Date().getFullYear();
+
+  var lb = document.getElementById('lb'), lbImg = lb && lb.querySelector('img');
+  function closeLb() { if (!lb) return; lb.hidden = true; lbImg.removeAttribute('src'); document.body.style.overflow = ''; }
+  if (lb) {
+    det.addEventListener('click', function (e) {
+      var b = e.target.closest && e.target.closest('.shot-btn');
+      if (!b) return;
+      lbImg.src = b.getAttribute('data-full'); lbImg.alt = b.getAttribute('data-alt') || '';
+      lb.hidden = false; document.body.style.overflow = 'hidden';
+    });
+    lb.addEventListener('click', closeLb);
+    addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
+  }
+
   route();
 })();
