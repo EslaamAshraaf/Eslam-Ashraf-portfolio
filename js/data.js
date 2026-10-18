@@ -1,6 +1,6 @@
 /* Project data — edit this file to update the cards on the home page AND the project details screens.
    Replace each "#" in `links` with your real Google Play / App Store URL.
-   `images` are the screenshots shown in the card, the hero and the Screenshots section. */
+   `images` are the screenshots shown in the Screenshots section; `cover` is the cropped app screen shown inside the phone mockups (cards, hero, project hero). */
 window.PROJECTS = [
   {
     id: 'farrah-now', name: 'Farrah now', kind: 'Social travel', emoji: '📍', g: 'g1',
@@ -9,6 +9,7 @@ window.PROJECTS = [
     highlights: ['Google Maps & geolocation to find nearby places', 'Google Sign-In and deep linking', 'Camera, microphone and photo library sharing'],
     chips: ['Flutter', 'Clean Architecture', 'MVVM', 'FCM'],
     images: ['assets/projects/farrah-now/1.webp', 'assets/projects/farrah-now/2.webp', 'assets/projects/farrah-now/3.webp'],
+    cover: 'assets/projects/farrah-now/cover.webp',
     overview: 'A cross-platform social discovery app built with Flutter for iOS and Android. Users find and view nearby places on the map, sign in with Google, and share photos and audio, all on a scalable codebase structured with Clean Architecture and the MVVM pattern.',
     facts: [['Platforms', 'iOS & Android'], ['Framework', 'Flutter & Dart'], ['Architecture', 'Clean Architecture · MVVM'], ['Notifications', 'Firebase Cloud Messaging']],
     features: [
@@ -34,6 +35,7 @@ window.PROJECTS = [
     highlights: ['Google Maps & Places for delivery and tracking links', 'Complex state handled with Cubit', 'Data layer on a RESTful Laravel API'],
     chips: ['Flutter', 'Cubit', 'Google Places', 'Laravel API', 'FCM'],
     images: ['assets/projects/mv-limousine/1.webp', 'assets/projects/mv-limousine/2.webp', 'assets/projects/mv-limousine/3.webp'],
+    cover: 'assets/projects/mv-limousine/cover.webp',
     overview: 'A cross-platform car rental app supporting two distinct service tiers: Standard and VIP. It handles delivery locations, dynamic tracking links for orders and multi-step booking workflows, on top of a RESTful Laravel API.',
     facts: [['Platforms', 'iOS & Android'], ['State management', 'Cubit (BLoC)'], ['Backend', 'RESTful Laravel API'], ['Maps', 'Google Maps & Places SDK']],
     features: [
@@ -59,6 +61,7 @@ window.PROJECTS = [
     highlights: ['On-device TensorFlow Lite cry classifier', 'Dio networking with token-refresh interceptors', 'Arabic & English with full RTL, light & dark themes'],
     chips: ['Riverpod', 'go_router', 'TFLite', 'fl_chart', 'Dio'],
     images: ['assets/projects/babytrack/1.webp', 'assets/projects/babytrack/2.webp', 'assets/projects/babytrack/3.webp'],
+    cover: 'assets/projects/babytrack/1.webp',
     overview: 'A cross-platform baby care app for iOS and Android with 20+ screens, real-time cry detection, growth tracking and analytics. It pairs an on-device TensorFlow Lite audio classifier with a server-side prediction API, and wraps everything in a custom Liquid Glass UI.',
     facts: [['Platforms', 'iOS & Android'], ['State management', 'Riverpod'], ['Navigation', 'go_router'], ['On-device AI', 'TensorFlow Lite']],
     features: [
@@ -86,6 +89,7 @@ window.PROJECTS = [
     highlights: ['Brand discovery — Nike, Adidas, Puma, Reebok', 'Order tracking across All, Active, Completed and Cancelled', 'Wishlist, cart and profile in one clean retail UI'],
     chips: ['Flutter', 'E-commerce', 'Search & filters', 'Order tracking'],
     images: ['assets/projects/foteek/1.webp', 'assets/projects/foteek/2.webp', 'assets/projects/foteek/3.webp'],
+    cover: 'assets/projects/foteek/cover.webp',
     overview: 'A cross-platform footwear store where customers discover sneakers by brand, search the catalogue, save favourites to a wishlist and follow every order from confirmation to delivery. The UI pairs a monochrome base with a single strong accent, keeping product photography front and centre.',
     facts: [['Platforms', 'iOS & Android'], ['Category', 'E-commerce · Footwear'], ['Core flows', 'Search · Wishlist · Cart · Orders'], ['Order states', 'All · Active · Completed · Cancelled']],
     features: [
@@ -109,6 +113,7 @@ window.PROJECTS = [
     highlights: ['Class catalogue by category and specialty', 'Course detail with lessons, reviews and free previews', 'Mentor profiles, ratings and favourites'],
     chips: ['Flutter', 'E-learning', 'Video lessons', 'Course detail'],
     images: ['assets/projects/rbcs/1.webp', 'assets/projects/rbcs/2.webp', 'assets/projects/rbcs/3.webp'],
+    cover: 'assets/projects/rbcs/cover.webp',
     overview: 'A medical learning hub that organises classes, specialties and mentors around one home feed. Learners browse categories, open a class detail screen with a free video preview, work through structured lessons and keep the classes they care about in favourites.',
     facts: [['Platforms', 'iOS & Android'], ['Domain', 'Medical education'], ['Content', 'Classes · Lessons · Mentors'], ['Extras', 'Ratings · Free previews']],
     features: [
@@ -132,6 +137,7 @@ window.PROJECTS = [
     highlights: ['Full Arabic interface with complete RTL support', 'Restaurant menus with categories, discounts and ratings', 'Cart, favourites and order history'],
     chips: ['Flutter', 'Arabic RTL', 'Food ordering', 'Cart & checkout'],
     images: ['assets/projects/gobite/1.webp', 'assets/projects/gobite/2.webp', 'assets/projects/gobite/3.webp'],
+    cover: 'assets/projects/gobite/cover.webp',
     overview: 'An Arabic food ordering app built right-to-left from the ground up. Customers pick a restaurant, browse a menu with categories and discounts, add items to the cart and follow the order — with first-order offers and daily promos built into the home feed.',
     facts: [['Platforms', 'iOS & Android'], ['Language', 'Arabic · Full RTL'], ['Core flows', 'Restaurants · Menu · Cart · Orders'], ['Promos', 'Discounts & first-order offers']],
     features: [

@@ -8,7 +8,7 @@
   function obs(r) { r.querySelectorAll('.rv').forEach(function (x) { io ? io.observe(x) : x.classList.add('in'); }); }
   function a(h, c, t) { return '<a class="' + c + '" href="' + h + '"' + (h === '#' ? '' : ' target="_blank" rel="noopener"') + '>' + t + '</a>'; }
   function phone(p, i) {
-    var src = p.images && p.images[i || 0];
+    var src = i ? (p.images && p.images[i]) : (p.cover || (p.images && p.images[0]));
     if (src) return '<div class="phone"><div class="scr shot ' + p.g + '"><img src="' + src + '" alt="' + esc(p.name) + ' screenshot" loading="lazy"></div></div>';
     return '<div class="phone"><div class="scr ' + p.g + '">' + p.emoji + '<i></i><i></i></div></div>';
   }
