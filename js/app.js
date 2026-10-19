@@ -63,8 +63,7 @@
       '<p class="eyebrow">' + esc(p.kind) + '</p>' +
       '<h2 id="cs-title" tabindex="-1">' + esc(p.name) + '</h2>' +
       '<p class="lead">' + esc(p.tagline) + '</p>' +
-      '<p class="cs-actions">' + a(p.links.play, 'btn', 'Google Play') + a(p.links.store, 'btn2', 'App Store') +
-      (p.links.repo ? a(p.links.repo, 'btn2', 'View repo') : '') + '</p>' +
+      '<p class="cs-actions">' + a(p.links.play, 'btn', 'Google Play') + a(p.links.store, 'btn2', 'App Store') + '</p>' +
       '</div>' +
       '<div class="cs-vis">' + launch(p) + '</div>' +
       '</div>' +
