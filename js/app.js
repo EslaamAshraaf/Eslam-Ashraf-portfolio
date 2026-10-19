@@ -292,14 +292,15 @@
   }
 
   function pointerGlow() {
-    var hero = document.querySelector('.hero');
-    if (!hero || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    var glow = document.querySelector('.cursor-glow');
+    if (!glow || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
     if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-    hero.addEventListener('pointermove', function (e) {
-      var r = hero.getBoundingClientRect();
-      hero.style.setProperty('--gx', (e.clientX - r.left) + 'px');
-      hero.style.setProperty('--gy', (e.clientY - r.top) + 'px');
-    });
+    addEventListener('pointermove', function (e) {
+      glow.style.setProperty('--gx', e.clientX + 'px');
+      glow.style.setProperty('--gy', e.clientY + 'px');
+      glow.classList.add('on');
+    }, { passive: true });
+    document.addEventListener('pointerleave', function () { glow.classList.remove('on'); });
   }
 
   function init() {
