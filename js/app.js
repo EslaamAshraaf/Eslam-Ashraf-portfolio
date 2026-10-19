@@ -64,7 +64,7 @@
       '<p class="lead">' + esc(p.tagline) + '</p>' +
       '<p class="cs-actions">' + a(p.links.play, 'btn', 'Google Play') + a(p.links.store, 'btn2', 'App Store') + '</p>' +
       '</div>' +
-      '<div class="cs-vis">' + launch(p) + '</div>' +
+      '<div class="cs-vis">' + launch(p, true) + '</div>' +
       '</div>' +
       '<section class="cs-sec"><h3>Metrics &amp; highlights</h3><dl class="cs-metrics">' +
       p.facts.map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') + '</dl></section>' +
