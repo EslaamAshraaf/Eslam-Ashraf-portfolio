@@ -139,13 +139,13 @@
       box.innerHTML = caseStudy(p);
       if (native) dlg.showModal(); else dlg.setAttribute('open', '');
       document.body.classList.add('lock');
-      wireCarousel();
+      wireCarousel(); bindTilts(box);
       var h = box.querySelector('#cs-title');
       if (h) h.focus();
     } else if (current !== p.id) {
       box.innerHTML = caseStudy(p);
       dlg.scrollTop = 0; box.scrollTop = 0;
-      wireCarousel();
+      wireCarousel(); bindTilts(box);
       var h2 = box.querySelector('#cs-title');
       if (h2) h2.focus();
     }
@@ -297,6 +297,28 @@
     if (location.hash) history.replaceState(null, '', location.pathname + location.search);
   });
 
+  function bindTilts(root) {
+    if (!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+    Array.prototype.forEach.call((root || document).querySelectorAll('.row .phone, .vis .phone, .cs-vis .phone'), function (el) {
+      if (el.dataset.tilt) return;
+      el.dataset.tilt = '1';
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect(),
+          x = (e.clientX - r.left) / r.width,
+          y = (e.clientY - r.top) / r.height;
+        el.style.setProperty('--rx', ((.5 - y) * 18).toFixed(2) + 'deg');
+        el.style.setProperty('--ry', ((x - .5) * 18).toFixed(2) + 'deg');
+        el.style.setProperty('--lx', (x * 100).toFixed(1) + '%');
+        el.style.setProperty('--ly', (y * 100).toFixed(1) + '%');
+      }, { passive: true });
+      el.addEventListener('pointerleave', function () {
+        el.style.removeProperty('--rx');
+        el.style.removeProperty('--ry');
+      });
+    });
+  }
+
   function pointerGlow() {
     var glow = document.querySelector('.cursor-glow');
     if (!glow || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
@@ -322,7 +344,7 @@
       requestAnimationFrame(function () { onScroll(); ticking = false; });
     }, { passive: true });
     document.getElementById('y').textContent = new Date().getFullYear();
-    stats(); pointerGlow(); onScroll(); spy(); route();
+    stats(); pointerGlow(); bindTilts(document); onScroll(); spy(); route();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
