@@ -16,7 +16,7 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6
 .nav .brand{justify-self:start}
 .nav .pill{justify-self:end}
 .nav nav,.nav .pill{visibility:visible;transition:opacity .3s .15s,transform .35s .15s,visibility 0s .3s}
-.nav.min .nav nav,.nav.min .pill{opacity:0;visibility:hidden;transform:scale(.92);pointer-events:none;transition:opacity .2s,transform .25s,visibility 0s .2s}
+.nav.min nav,.nav.min .pill{opacity:0;visibility:hidden;transform:scale(.92);pointer-events:none;transition:opacity .2s,transform .25s,visibility 0s .2s}
 .nav nav a:hover{color:var(--fg)}
 .brand{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:-.03em;white-space:nowrap}
 .mk{width:36px;height:32px;display:block;overflow:visible;filter:drop-shadow(0 2px 6px rgba(162,89,255,.3))}
