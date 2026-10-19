@@ -211,12 +211,10 @@ body.lock{overflow:hidden}
 .js .hero .row .phone{animation:floaty 7s ease-in-out infinite}
 .js .hero .row .phone:nth-child(2){animation:floaty 8.4s -2.6s ease-in-out infinite}
 .js .hero .row .phone:nth-child(3){animation:floaty 7.8s -4.9s ease-in-out infinite}
-.row .phone{transition:scale .35s cubic-bezier(.2,.7,.2,1),opacity .35s,filter .35s,box-shadow .35s,transform .3s cubic-bezier(.2,.7,.2,1)}
+.row .phone{transition:scale .35s cubic-bezier(.2,.7,.2,1),opacity .35s,filter .35s,box-shadow .35s}
 .row .phone:hover{scale:1.04;opacity:1;filter:none;z-index:2;box-shadow:0 48px 90px -28px rgba(0,0,0,.6),0 0 0 3px rgba(41,151,255,.55)}
 .row:hover .phone:not(:hover){opacity:.5;filter:saturate(.65) brightness(.92)}
 .row .phone:hover .peek{opacity:1;transform:none}
-.row .phone,.vis .phone,.cs-vis .phone{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
-.vis .phone,.cs-vis .phone{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
 .scr::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .35s ease;background:radial-gradient(circle at var(--lx,50%) var(--ly,50%),rgba(255,255,255,.32),rgba(255,255,255,0) 62%)}
 .phone:hover .scr::before{opacity:1}
 .js .grad,.js .wm b{background-size:200% 100%;animation:sheen 5.5s linear infinite}
