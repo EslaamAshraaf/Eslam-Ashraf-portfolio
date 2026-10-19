@@ -46,8 +46,7 @@
     var n = P[(P.indexOf(p) + 1) % P.length];
     var slides = (p.images || []).map(function (src, i) {
       return '<li class="slide"><button class="shot-btn" type="button" data-full="' + src + '" data-alt="' + esc(p.name) + ' — screen ' + (i + 1) + '" aria-label="Enlarge ' + esc(p.name) + ' screen ' + (i + 1) + ' of ' + p.images.length + '">' +
-        '<img src="' + src + '" alt="' + esc(p.name) + ' screen ' + (i + 1) + ' of ' + p.images.length + '" loading="lazy"></button>' +
-        '<p class="slide-cap">Screen ' + (i + 1) + ' / ' + p.images.length + '</p></li>';
+        '<img src="' + src + '" alt="' + esc(p.name) + ' screen ' + (i + 1) + ' of ' + p.images.length + '" loading="lazy"></button></li>';
     }).join('');
     var car = slides ?
       '<section class="cs-sec"><h3>Interface preview</h3>' +
@@ -97,10 +96,16 @@
   function wireCarousel() {
     var track = box.querySelector('.car-track');
     if (!track) return;
-    var status = box.querySelector('.car-status'),
+    var car = track.parentNode,
+      status = box.querySelector('.car-status'),
       prev = box.querySelector('.car-b.prev'),
       next = box.querySelector('.car-b.next'),
       n = track.children.length, t;
+    function fits() {
+      if (car) car.classList.toggle('over', track.scrollWidth - track.clientWidth > 2);
+    }
+    if (window.ResizeObserver) new ResizeObserver(fits).observe(track);
+    fits();
     function idx() {
       var mid = track.scrollLeft + track.clientWidth / 2, best = 0, bd = 1e9;
       for (var i = 0; i < n; i++) {
