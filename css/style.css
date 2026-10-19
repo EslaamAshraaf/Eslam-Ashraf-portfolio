@@ -41,7 +41,7 @@ h3{font-size:clamp(26px,3.6vw,40px);font-weight:700;letter-spacing:-.02em;line-h
 .lnk:hover{text-decoration:underline}
 .hero{padding-bottom:0;text-align:center;overflow:hidden;padding-top:clamp(56px,9vw,110px)}
 .hero::before{content:"";position:absolute;inset:0 0 auto;height:75%;background:radial-gradient(ellipse at 50% 0,rgba(41,151,255,.2),transparent 65%);pointer-events:none;transition:transform .7s cubic-bezier(.2,.7,.2,1);transform:translate3d(var(--mx,0px),var(--my,0px),0)}
-.row{display:flex;justify-content:center;gap:clamp(12px,3vw,34px);margin-top:clamp(40px,6vw,72px);height:clamp(330px,46vw,540px);overflow:hidden;padding-top:48px}
+.row{display:flex;justify-content:center;gap:clamp(12px,3vw,34px);margin-top:clamp(40px,6vw,72px);height:clamp(380px,54vw,600px);overflow:hidden;padding-top:84px}
 .row .phone{width:clamp(104px,19vw,215px);flex:none;align-self:flex-start}
 .row .phone:nth-child(2){margin-top:-26px}
 .phone{width:min(230px,62vw);aspect-ratio:9/18.5;border-radius:12% / 5.8%;background:#111;box-shadow:0 30px 60px -20px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.12);container-type:inline-size;position:relative}
@@ -210,7 +210,7 @@ body.lock{overflow:hidden}
 .js .hero .row .phone:nth-child(2){animation:floaty 8.4s -2.6s ease-in-out infinite}
 .js .hero .row .phone:nth-child(3){animation:floaty 7.8s -4.9s ease-in-out infinite}
 .row .phone{transition:translate .35s cubic-bezier(.2,.7,.2,1),scale .35s cubic-bezier(.2,.7,.2,1),opacity .35s,filter .35s,box-shadow .35s}
-.row .phone:hover{translate:0 -18px;scale:1.06;opacity:1;filter:none;z-index:2;box-shadow:0 48px 90px -28px rgba(0,0,0,.6),0 0 0 3px rgba(41,151,255,.55)}
+.row .phone:hover{translate:0 -16px;scale:1.04;opacity:1;filter:none;z-index:2;box-shadow:0 48px 90px -28px rgba(0,0,0,.6),0 0 0 3px rgba(41,151,255,.55)}
 .row:hover .phone:not(:hover){opacity:.5;filter:saturate(.65) brightness(.92)}
 .row .phone:hover .peek{opacity:1;transform:none}
 .js .grad,.js .wm b{background-size:200% 100%;animation:sheen 5.5s linear infinite}
