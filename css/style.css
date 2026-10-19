@@ -10,7 +10,7 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:11;background:var(--nav);-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid transparent;transition:border-color .3s}
 .nav.sc{border-color:var(--line)}
 .nav .in{max-width:1024px;margin:auto;height:48px;padding:0 22px;display:flex;align-items:center;justify-content:space-between;font-size:13px}
-.nav nav{display:flex;gap:clamp(16px,3vw,32px);color:var(--fg2)}
+.nav nav{display:flex;gap:clamp(6px,2vw,18px);color:var(--fg2)}
 .nav nav a:hover{color:var(--fg)}
 .brand{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:-.03em;white-space:nowrap}
 .mk{width:36px;height:32px;display:block;overflow:visible;filter:drop-shadow(0 2px 6px rgba(162,89,255,.3))}
@@ -188,9 +188,9 @@ body.lock{overflow:hidden}
 .card:hover .cs-open .arw,.card:focus-within .cs-open .arw{transform:translateX(5px)}
 .scr .peek{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:inherit;opacity:0;transform:scale(1.05);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.7,.2,1)}
 .card:hover .peek,.card:focus-within .peek{opacity:1;transform:none}
-.nav nav a{position:relative;transition:color .2s}
-.nav nav a::before{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;border-radius:2px;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
-.nav nav a:hover::before,.nav nav a:focus-visible::before,.nav nav a.on::before{transform:scaleX(1)}
+.nav nav a{position:relative;transition:color .2s;padding:6px 13px;border-radius:980px}
+.nav nav a::after{content:"";position:absolute;inset:0;border-radius:980px;background:var(--chip);opacity:0;transform:scale(.92);transition:opacity .22s,transform .3s cubic-bezier(.2,.7,.2,1);pointer-events:none;z-index:-1}
+.nav nav a:hover::after,.nav nav a:focus-visible::after,.nav nav a.on::after{opacity:1;transform:scale(1)}
 .nav nav a.on{color:var(--fg);font-weight:600}
 .prog{position:absolute;left:0;bottom:-1px;height:2px;width:100%;background:linear-gradient(90deg,#2997ff,#a259ff,#ff375f);transform:scaleX(0);transform-origin:0 50%;border-radius:0 2px 2px 0;pointer-events:none}
 .btn:focus-visible,.btn2:focus-visible,.pill:focus-visible,.cs-x:focus-visible,.car-b:focus-visible,.shot-btn:focus-visible,.lb-x:focus-visible{outline:2px solid var(--cta);outline-offset:3px}
@@ -237,7 +237,7 @@ body.lock{overflow:hidden}
   .js .hero .eyebrow,.js .hero h1,.js .hero .lead,.js .hero .cta,.js .hero .row,
   .js .hero .row .phone,.js .grad,.js .wm b,
   .case[open] .cs-top,.case[open] .cs-sec,.case[open] .cs-foot{animation:none}
-  .tile,.info div,.tri>div,.car-track .slide,.nav nav a::before,.row .phone{transition:none}
+  .tile,.info div,.tri>div,.car-track .slide,.nav nav a::after,.row .phone{transition:none}
   .tile:hover,.info div:hover,.tri>div:hover,.car-track .slide:hover{transform:none;box-shadow:none}
   .row .phone:hover{translate:none;scale:none}
   .cursor-glow{display:none}
