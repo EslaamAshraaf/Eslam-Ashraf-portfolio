@@ -77,6 +77,17 @@ h3{font-size:clamp(26px,3.6vw,40px);font-weight:700;letter-spacing:-.02em;line-h
 .card li::before{content:"✓";color:var(--blue);font-weight:700;margin-right:10px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
 .chips span{background:var(--chip);padding:5px 12px;border-radius:980px;font-size:13px;font-weight:500}
+.pkg{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,4vw,56px);align-items:center;background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:clamp(24px,4.5vw,52px)}
+.pkg h3{font-size:clamp(26px,3.6vw,38px);letter-spacing:-.03em;margin-bottom:10px}
+.pkg .ver{font-size:13px;font-weight:600;color:var(--fg2);background:var(--chip);border-radius:980px;padding:4px 12px;vertical-align:middle;margin-left:10px;letter-spacing:0}
+.pkg .d{max-width:56ch}
+.pkg-feats{list-style:none;padding:0;margin:16px 0 26px;display:flex;flex-wrap:wrap;gap:8px}
+.pkg-feats li{font-size:13px;color:var(--fg2);border:1px solid var(--line);border-radius:980px;padding:6px 14px}
+.pkg-stats{display:flex;flex-direction:column;gap:14px;min-width:180px}
+.pkg-stats div{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px;text-align:center}
+.pkg-stats b{display:block;font-size:30px;letter-spacing:-.02em}
+.pkg-stats span{font-size:12px;color:var(--fg2)}
+@media(max-width:860px){.pkg{grid-template-columns:1fr}.pkg-stats{flex-direction:row}.pkg-stats div{flex:1}}
 .links{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 .vis{display:flex;justify-content:center}
 #work .w{max-width:1240px}
