@@ -345,6 +345,33 @@
     }, { passive: true });
     document.getElementById('y').textContent = new Date().getFullYear();
     stats(); pointerGlow(); bindGlare(document); onScroll(); spy(); route();
+    var tBtn = document.querySelector('.nav-t');
+    if (tBtn) {
+      var root = document.documentElement;
+      var isDark = function () {
+        var t = root.getAttribute('data-theme');
+        if (t) return t === 'dark';
+        return matchMedia('(prefers-color-scheme:dark)').matches;
+      };
+      var sync = function () {
+        var d = isDark();
+        tBtn.classList.toggle('on', d);
+        tBtn.setAttribute('aria-pressed', d ? 'true' : 'false');
+      };
+      sync();
+      matchMedia('(prefers-color-scheme:dark)').addEventListener('change', function () {
+        if (!root.hasAttribute('data-theme')) sync();
+      });
+      tBtn.addEventListener('click', function () {
+        var d = !isDark();
+        root.setAttribute('data-theme', d ? 'dark' : 'light');
+        try { localStorage.setItem('theme', d ? 'dark' : 'light'); } catch (e) {}
+        sync();
+        tBtn.classList.remove('spin');
+        void tBtn.offsetWidth;
+        tBtn.classList.add('spin');
+      });
+    }
     var mBtn = document.querySelector('.nav-m'), drop = document.querySelector('.nav-drop');
     if (mBtn && drop) {
       var closeDrop = function () {
