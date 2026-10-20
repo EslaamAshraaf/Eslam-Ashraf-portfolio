@@ -431,9 +431,10 @@
           setTimeout(function () { ph.classList.add('peek-on'); }, [].indexOf.call(sibs, ph) * 160);
           pObs.unobserve(ph);
         });
-      }, { threshold: 0.4 });
+      }, { threshold: 0.3 });
       Array.prototype.forEach.call(document.querySelectorAll('.row .phone .peek, .vis .phone .peek'), function (pk) {
-        pObs.observe(pk.parentNode);
+        var ph = pk.closest ? pk.closest('.phone') : pk.parentNode;
+        if (ph) pObs.observe(ph);
       });
     }
   }
