@@ -429,7 +429,7 @@
         done();
       }
     });
-    if ('IntersectionObserver' in window) {
+    if (matchMedia('(hover: none), (max-width: 640px)').matches && 'IntersectionObserver' in window) {
       var pObs = new IntersectionObserver(function (ens) {
         ens.forEach(function (en) {
           if (!en.isIntersecting) return;
