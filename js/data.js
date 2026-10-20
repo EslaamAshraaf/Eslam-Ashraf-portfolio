@@ -37,7 +37,11 @@ window.PROJECTS = [
       'Responsive layouts across phone classes',
       'FCM notifications surfaced without blocking the UI'
     ],
-    links: { play: '#', store: '#', repo: '#' }
+    links: {
+      play: 'https://play.google.com/store/apps/details?id=com.wanderr.app&hl=en',
+      store: 'https://apps.apple.com/us/app/farrah-now/id6760767174?l=ar',
+      repo: '#'
+    }
   },
   {
     id: 'mv-limousine', name: 'MV Limousine', kind: 'Car rental', emoji: '🚘', g: 'g2',
@@ -74,7 +78,11 @@ window.PROJECTS = [
       'Live tracking stays smooth under status updates',
       'Dual-tier flows responsive across devices'
     ],
-    links: { play: '#', store: '#', repo: '#' }
+    links: {
+      play: 'https://play.google.com/store/apps/details?id=com.Triple.MVLimousine&hl=en',
+      store: 'https://apps.apple.com/eg/app/mv-limousine/id6757188466',
+      repo: '#'
+    }
   },
   {
     id: 'babytrack', name: 'BabyTrack', kind: 'Baby care · On-device AI', emoji: '👶', g: 'g3',
@@ -113,7 +121,11 @@ window.PROJECTS = [
       'Full Arabic RTL with persistent light and dark themes',
       'Secure credential storage by default'
     ],
-    links: { play: '#', store: '#', repo: '#' }
+    links: {
+      play: 'https://play.google.com/store/apps/details?id=com.babytrackk.app',
+      store: 'https://apps.apple.com/us/app/baby-track/id6770317630',
+      repo: '#'
+    }
   },
   {
     id: 'foteek', name: 'Foteek', kind: 'E-commerce · Footwear', emoji: '👟', g: 'g4',
@@ -148,7 +160,11 @@ window.PROJECTS = [
       'Single-accent design system keeps product photography dominant',
       'Lightweight profile and notifications preserve navigation speed'
     ],
-    links: { play: '#', store: '#', repo: '#' }
+    links: {
+      play: 'https://play.google.com/store/apps/details?id=com.footek.triple&hl=en',
+      store: 'https://apps.apple.com/au/app/footek/id6795145200',
+      repo: '#'
+    }
   },
   {
     id: 'rbcs', name: 'RBCS', kind: 'E-learning · Medical', emoji: '🩺', g: 'g5',
@@ -219,6 +235,10 @@ window.PROJECTS = [
       'RTL transitions and gestures validated at edge cases',
       'Responsive across device classes with native-feeling RTL motion'
     ],
-    links: { play: '#', store: '#', repo: '#' }
+    links: {
+      play: 'https://play.google.com/store/apps/details?id=com.gobite.triple',
+      store: 'https://apps.apple.com/ng/app/gobite/id6800733653',
+      repo: '#'
+    }
   }
 ];
