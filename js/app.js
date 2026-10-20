@@ -331,6 +331,86 @@
     document.addEventListener('pointerleave', function () { glow.classList.remove('on'); });
   }
 
+  function offGame(cv) {
+    var ctx = cv.getContext('2d');
+    var raf = 0, run = false, over = false, frame = 0, next = 60, speed = 4.2, score = 0, best = 0;
+    var W = cv.width, H = cv.height, GH = H - 24;
+    var d = null, obs = [];
+    function css(v) { return (getComputedStyle(document.body).getPropertyValue(v) || '').trim(); }
+    function reset() {
+      d = { x: 46, y: GH - 30, vy: 0, w: 28, h: 30 };
+      obs = []; frame = 0; next = 50; speed = 4.2; score = 0; over = false;
+    }
+    function jump() {
+      if (!run) return;
+      if (over) { reset(); return; }
+      if (d.y >= GH - d.h - 0.5) d.vy = -10.4;
+    }
+    function step() {
+      frame++;
+      if (!over) {
+        score += 0.15;
+        speed = 4.2 + Math.min(score * 0.03, 4.5);
+        d.vy += 0.52; d.y += d.vy;
+        if (d.y > GH - d.h) { d.y = GH - d.h; d.vy = 0; }
+        if (frame >= next) {
+          obs.push({ x: W, w: 12 + Math.random() * 10, h: 18 + Math.random() * 20 });
+          next = frame + 55 + Math.random() * 50;
+        }
+        for (var i = obs.length - 1; i >= 0; i--) {
+          var o = obs[i];
+          o.x -= speed;
+          if (o.x < -30) { obs.splice(i, 1); continue; }
+          if (d.x + 5 < o.x + o.w && d.x + d.w - 3 > o.x && d.y + d.h > GH - o.h) {
+            over = true;
+            if (Math.floor(score) > best) best = Math.floor(score);
+          }
+        }
+      }
+      draw();
+      raf = requestAnimationFrame(step);
+    }
+    function draw() {
+      var fg = css('--fg') || '#3c3c43';
+      var bg = css('--bg') || '#fff';
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = fg;
+      ctx.globalAlpha = .3;
+      ctx.fillRect(0, GH + 10, W, 2);
+      ctx.globalAlpha = 1;
+      for (var i = 0; i < obs.length; i++) {
+        var o = obs[i];
+        ctx.fillRect(o.x, GH - o.h, o.w, o.h);
+        ctx.fillRect(o.x - 5, GH - o.h * .6, 5, o.h * .25);
+      }
+      var x = d.x, y = d.y;
+      ctx.fillRect(x + 7, y + 12, 17, 14);
+      ctx.fillRect(x + 17, y + 2, 12, 14);
+      ctx.fillRect(x + 1, y + 16, 8, 7);
+      ctx.fillStyle = bg;
+      ctx.fillRect(x + 24, y + 5, 3, 3);
+      ctx.fillStyle = fg;
+      var ph = Math.floor(frame / 6) % 2;
+      ctx.fillRect(x + 9, y + 24, 5, 6 - ph * 3);
+      ctx.fillRect(x + 18, y + 24, 5, 3 + ph * 3);
+      ctx.font = '600 13px ui-monospace,SFMono-Regular,Menlo,monospace';
+      ctx.textAlign = 'right';
+      ctx.globalAlpha = .75;
+      ctx.fillText('HI ' + String(best).padStart(5, '0') + '  ' + String(Math.floor(score)).padStart(5, '0'), W - 10, 20);
+      ctx.globalAlpha = 1;
+      if (over) {
+        ctx.textAlign = 'center';
+        ctx.globalAlpha = .8;
+        ctx.fillText('GAME OVER — tap to retry', W / 2, H / 2 - 6);
+        ctx.globalAlpha = 1;
+      }
+    }
+    return {
+      start: function () { if (run) return; run = true; reset(); cancelAnimationFrame(raf); raf = requestAnimationFrame(step); },
+      stop: function () { run = false; cancelAnimationFrame(raf); },
+      jump: jump
+    };
+  }
   function init() {
     document.getElementById('cards').innerHTML = P.map(card).join('');
     Array.prototype.forEach.call(document.querySelectorAll('#cards .card'), function (c, i) {
@@ -435,6 +515,30 @@
       Array.prototype.forEach.call(document.querySelectorAll('.row .phone .peek, .vis .phone .peek'), function (pk) {
         var ph = pk.closest ? pk.closest('.phone') : pk.parentNode;
         if (ph) pObs.observe(ph);
+      });
+    }
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+      addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+    }
+    var off = document.getElementById('off');
+    if (off) {
+      var g = offGame(off.querySelector('.off-game'));
+      var showOff = function () { off.hidden = false; requestAnimationFrame(function () { off.classList.add('on'); }); g.start(); };
+      var hideOff = function () { off.classList.remove('on'); g.stop(); setTimeout(function () { off.hidden = true; }, 360); };
+      addEventListener('offline', showOff);
+      addEventListener('online', hideOff);
+      if (!navigator.onLine) showOff();
+      var retry = document.getElementById('off-retry');
+      if (retry) retry.addEventListener('click', function () {
+        if (navigator.onLine) location.reload();
+        else { retry.textContent = 'Still offline'; setTimeout(function () { retry.textContent = 'Try again'; }, 1600); }
+      });
+      var go = document.getElementById('off-go');
+      if (go) go.addEventListener('click', hideOff);
+      off.querySelector('.off-game').addEventListener('pointerdown', function (e) { e.preventDefault(); g.jump(); });
+      document.addEventListener('keydown', function (e) {
+        if ((e.code === 'Space' || e.key === ' ') && off.classList.contains('on')) { e.preventDefault(); g.jump(); }
+        if (e.key === 'Escape' && off.classList.contains('on')) hideOff();
       });
     }
   }

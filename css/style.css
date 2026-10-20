@@ -342,3 +342,14 @@ body.lock{overflow:hidden}
 @media(max-width:640px){.to-top{width:46px;height:46px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
 @media(prefers-reduced-motion:reduce){.to-top,.to-top:hover,.to-top:active{transition:opacity .2s,visibility .2s;transform:none}}
 @media(prefers-reduced-motion:reduce){.ct-avail .dot{animation:none}.ct-card{transition:border-color .2s,background .2s}.ct-card:hover{transform:none}.ct-cpy{transition:background .2s,color .2s,border-color .2s}.ct-cpy:hover{transform:none}}
+.off{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(12,12,14,.55);-webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
+.off.on{opacity:1;visibility:visible}
+.off[hidden]{display:none!important}
+.off-card{width:min(680px,100%);background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:28px;padding:clamp(22px,5vw,38px);text-align:center;box-shadow:0 40px 90px -30px rgba(0,0,0,.6);transform:translateY(18px) scale(.98);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.off.on .off-card{transform:none}
+.off h2{font-size:clamp(28px,5vw,40px);letter-spacing:-.02em;margin:0 0 10px}
+.off .lead{margin:0 auto;max-width:460px;font-size:17px;color:var(--fg2)}
+.off .cta{margin-top:22px}
+.off-game{width:100%;height:auto;aspect-ratio:640/180;border-radius:16px;background:var(--bg2);border:1px solid var(--line);margin-bottom:22px;display:block;cursor:pointer;touch-action:manipulation;image-rendering:pixelated}
+.off-err{margin:16px 0 0;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--fg2);letter-spacing:.05em}
+@media(prefers-reduced-motion:reduce){.off,.off-card{transition:opacity .2s,visibility .2s}.off-card{transform:none}}
