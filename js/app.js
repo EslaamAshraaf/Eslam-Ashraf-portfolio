@@ -291,8 +291,8 @@
   function onScroll() {
     var y = scrollY;
     nav.classList.toggle('sc', y > 8);
-    if (y > 60 && y > lastY) nav.classList.add('min');
-    else if (y < lastY || y <= 60) nav.classList.remove('min');
+    if (y > 60 && y > lastY && !matchMedia('(max-width:640px)').matches) nav.classList.add('min');
+    else if (y < lastY || y <= 60 || matchMedia('(max-width:640px)').matches) nav.classList.remove('min');
     lastY = y;
     if (prog) {
       var h = document.documentElement.scrollHeight - innerHeight;

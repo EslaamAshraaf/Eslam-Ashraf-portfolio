@@ -40,7 +40,7 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6
 .pill{background:var(--fg);color:var(--bg);padding:5px 13px;border-radius:980px;font-weight:500;display:inline-block;transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s}
 .pill:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(0,0,0,.5)}
 .pill:active{transform:scale(.97)}
-@media(max-width:640px){.nav nav{display:none}.nav .pill{display:none}.nav-m{display:grid;position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:2}.nav-drop{display:flex}.brand{padding-right:48px}}
+@media(max-width:640px){.nav nav{display:none}.nav .pill{display:none}.nav-m{display:grid;position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:2}.nav-drop{display:flex}.brand{padding-right:48px}.nav.min .in{max-width:1024px;translate:none}.nav.min .brand{translate:none}}
 @media(max-width:400px){.brand{font-size:15px;padding-right:44px}.mk{width:30px;height:27px}}
 section{padding:clamp(72px,12vw,140px) 22px;position:relative}
 .w{max-width:1024px;margin:auto}
