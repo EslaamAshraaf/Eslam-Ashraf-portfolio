@@ -25,6 +25,7 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6
 .nav-t.on .t-moon{opacity:1;transform:none}
 .nav-t.spin{animation:tspin .6s cubic-bezier(.2,.7,.2,1)}
 @keyframes tspin{to{transform:rotate(360deg)}}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 .nav-m{display:none;width:40px;height:40px;border-radius:50%;place-items:center;padding:0;border:1px solid var(--line);background:var(--nav);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);cursor:pointer;color:var(--fg);transition:transform .2s,background .2s}
 .nav-m:hover{transform:scale(1.06)}
 .nav-m svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
