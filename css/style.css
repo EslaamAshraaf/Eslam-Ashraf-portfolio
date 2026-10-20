@@ -288,6 +288,7 @@ body.lock{overflow:hidden}
 .nav nav a:hover::after,.nav nav a:focus-visible::after,.nav nav a.on::after{opacity:1;transform:scale(1)}
 .nav nav a.on{color:var(--fg);font-weight:600}
 .prog{position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,#2997ff,#a259ff,#ff375f);transform:scaleX(0);transform-origin:0 50%;pointer-events:none}
+.nav.min .prog{top:0;bottom:0;height:auto;border-radius:980px;background:conic-gradient(#2997ff 0,#ff375f calc(var(--p,0)*1turn),rgba(162,89,255,.22) calc(var(--p,0)*1turn),rgba(162,89,255,.22) 1turn);padding:2px;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask-composite:exclude}
 .btn:focus-visible,.btn2:focus-visible,.pill:focus-visible,.cs-x:focus-visible,.car-b:focus-visible,.shot-btn:focus-visible,.lb-x:focus-visible{outline:2px solid var(--cta);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){
   .case[open],.case[open]::backdrop{animation:none}

@@ -302,7 +302,9 @@
     lastY = y;
     if (prog) {
       var h = document.documentElement.scrollHeight - innerHeight;
-      prog.style.transform = 'scaleX(' + (h > 0 ? Math.min(y / h, 1) : 0) + ')';
+      var p = h > 0 ? Math.min(y / h, 1) : 0;
+      prog.style.setProperty('--p', p);
+      prog.style.transform = nav.classList.contains('min') ? 'none' : 'scaleX(' + p + ')';
     }
     if (toTop) toTop.classList.toggle('on', y > 400);
   }
