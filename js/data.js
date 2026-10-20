@@ -27,6 +27,16 @@ window.PROJECTS = [
       'Device APIs': ['Camera', 'Microphone', 'Photo Library'],
       'Messaging': ['Firebase Cloud Messaging']
     },
+    challenge: {
+      problem: 'Fuse continuous device geolocation with map-backed place discovery while keeping the UI free of platform-service concerns, and make authenticated sessions survive deep-link entry from external surfaces.',
+      solution: 'Clean Architecture under MVVM: domain use-cases stay framework-agnostic, repositories abstract Maps, location and auth providers, and view-models expose immutable state streams. Auth session lifecycle is first-class state so deep links mid-session resolve without re-auth; media capture sits behind an injectable device-API gateway for testability.'
+    },
+    polish: [
+      'Location updates debounced and batched so map interaction stays on the main path',
+      'Media compression handled off the UI thread',
+      'Responsive layouts across phone classes',
+      'FCM notifications surfaced without blocking the UI'
+    ],
     links: { play: '#', store: '#', repo: '#' }
   },
   {
@@ -54,6 +64,16 @@ window.PROJECTS = [
       'Maps & places': ['Google Maps SDK', 'Google Places SDK'],
       'Messaging': ['Firebase Cloud Messaging']
     },
+    challenge: {
+      problem: 'A single booking funnel spans two service tiers with live price recalculation, driver availability, delivery-location selection, and an order lifecycle that must stay consistent across multi-step navigation and intermittent connectivity.',
+      solution: 'The booking flow is an explicit Cubit state machine — typed states with guarded transitions per step, with price recalculation as a pure derivation of current state. Dio interceptors centralize auth, error normalization and retries behind a repository layer over the Laravel API; Maps and Places sit behind service abstractions; order tracking is a reactive stream.'
+    },
+    polish: [
+      'Booking wizard state preserved across route transitions',
+      'Price and availability calls debounced to cut API chatter',
+      'Live tracking stays smooth under status updates',
+      'Dual-tier flows responsive across devices'
+    ],
     links: { play: '#', store: '#', repo: '#' }
   },
   {
@@ -83,6 +103,16 @@ window.PROJECTS = [
       'UI & charts': ['Liquid Glass UI', 'fl_chart', 'Arabic/English RTL', 'Light & dark themes'],
       'Security & messaging': ['flutter_secure_storage', 'Firebase Cloud Messaging']
     },
+    challenge: {
+      problem: 'Run continuous audio-based cry classification on-device with acceptable latency and battery cost, reconcile model inferences with server-side predictions, keep auth fresh across long sessions, and drive 20+ chart-heavy screens inside a heavily animated custom UI.',
+      solution: 'A two-tier ML pipeline: on-device TensorFlow Lite classifier for real-time, privacy-preserving detection plus a server-side prediction API, reconciled at the domain level. Riverpod providers stream classification events reactively; Dio token-refresh uses single-flight refresh with queued replay to eliminate race conditions; credentials live in flutter_secure_storage; go_router keeps the 20+ screen tree declarative.'
+    },
+    polish: [
+      'Inference runs off the UI isolate',
+      'fl_chart dashboards animate without jank via scoped Riverpod rebuilds',
+      'Full Arabic RTL with persistent light and dark themes',
+      'Secure credential storage by default'
+    ],
     links: { play: '#', store: '#', repo: '#' }
   },
   {
@@ -108,6 +138,16 @@ window.PROJECTS = [
       'UI': ['Search & brand filters', 'Product grids & cards', 'Cart & wishlist'],
       'Flows': ['Order history', 'Order status tracking', 'Notifications']
     },
+    challenge: {
+      problem: 'Keep catalogue search, brand filters, wishlist mutations and cart operations instantly consistent while orders move through four lifecycle states — without stale UI or duplicate sources of truth between tabs.',
+      solution: 'Immutable domain models behind a repository-backed data layer, with presentation state derived reactively so a wishlist mutation reflects instantly across grids, cards and detail screens. Order status is a single enum driving both tab filters and per-item presentation; search and brand filters compose as pure predicate layers over the catalogue stream.'
+    },
+    polish: [
+      'Lazy product grids with image caching for smooth scrolling',
+      'Optimistic cart and wishlist actions with API reconciliation',
+      'Single-accent design system keeps product photography dominant',
+      'Lightweight profile and notifications preserve navigation speed'
+    ],
     links: { play: '#', store: '#', repo: '#' }
   },
   {
@@ -133,6 +173,16 @@ window.PROJECTS = [
       'UI': ['Category carousels', 'Video previews', 'Tabbed class detail'],
       'Flows': ['Search & filters', 'Favourites', 'Mentor profiles']
     },
+    challenge: {
+      problem: 'Present a deep content hierarchy — category to class to lesson sections with free vs. locked items — alongside ratings, reviews and mentors, without overwhelming learners or duplicating state logic per content type.',
+      solution: 'A layered domain graph of categories, classes, lesson sections and mentors behind a content repository; the class-detail screen composes reusable sections from one view-model. Free-preview vs. locked access rules live at the domain level; favourites are a reactive persisted set syncing hearts across rails and cards; video playback sits behind its own abstraction.'
+    },
+    polish: [
+      'Carousels and lesson lists virtualized for smooth scrolling',
+      'Expandable lesson sections animate without layout thrash',
+      'Tabs preserve scroll and playback state',
+      'Ratings rendered from pre-aggregated streams to avoid waterfalls'
+    ],
     links: { play: '#', store: '#', repo: '#' }
   },
   {
@@ -159,6 +209,16 @@ window.PROJECTS = [
       'UI': ['Menu grids', 'Cart & checkout', 'Offers & banners'],
       'Flows': ['Restaurant list', 'Order history', 'Favourites']
     },
+    challenge: {
+      problem: 'Deliver a production ordering experience that is natively RTL — not a mirrored afterthought — while cart, favourites, promo eligibility and order status stay consistent across deep navigation stacks.',
+      solution: 'RTL designed in from the design-system level: direction-aware spacing and alignment plus ARB-based localization so mirrored layouts are structural. The cart is one reactive aggregate with promo eligibility and totals as pure functions; restaurants, menus and discounts stream through a catalogue repository; order tracking drives history and live status from a single stream.'
+    },
+    polish: [
+      'Menu grids lazy-loaded with cached imagery',
+      'Promo eligibility resolved client-side against cart state',
+      'RTL transitions and gestures validated at edge cases',
+      'Responsive across device classes with native-feeling RTL motion'
+    ],
     links: { play: '#', store: '#', repo: '#' }
   }
 ];

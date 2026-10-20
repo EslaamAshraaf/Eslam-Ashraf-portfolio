@@ -70,6 +70,12 @@
       p.facts.map(function (f) { return '<div><dt>' + esc(f[0]) + '</dt><dd>' + esc(f[1]) + '</dd></div>'; }).join('') + '</dl></section>' +
       '<section class="cs-sec"><h3>Overview</h3><p class="cs-copy">' + esc(p.overview) + '</p></section>' +
       car +
+      (p.challenge ? '<section class="cs-sec"><h3>Engineering challenge &amp; solution</h3><div class="cs-chal">' +
+        '<div class="cs-chal-tile"><h4>The challenge</h4><p>' + esc(p.challenge.problem) + '</p></div>' +
+        '<div class="cs-chal-tile"><h4>The solution</h4><p>' + esc(p.challenge.solution) + '</p></div>' +
+        '</div></section>' : '') +
+      (p.polish ? '<section class="cs-sec"><h3>Performance &amp; polish</h3><ul class="cs-polish">' +
+        p.polish.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></section>' : '') +
       '<section class="cs-sec"><h3>Key features</h3><div class="cs-grid">' +
       p.features.map(function (f) { return '<div class="cs-tile"><h4>' + esc(f[0]) + '</h4><p>' + esc(f[1]) + '</p></div>'; }).join('') + '</div></section>' +
       '<section class="cs-sec"><h3>Tech stack</h3><div class="cs-stack">' +

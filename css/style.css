@@ -245,6 +245,14 @@ body.lock{overflow:hidden}
 .cs-tile{background:var(--bg2);border-radius:20px;padding:22px 20px}
 .cs-tile h4{font-size:18px;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
 .cs-tile p{color:var(--fg2);font-size:15px;line-height:1.45;margin:0}
+.cs-chal{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cs-chal-tile{background:var(--bg2);border:1px solid var(--line);border-radius:20px;padding:24px 22px}
+.cs-chal-tile h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--blue);font-weight:700;margin:0 0 10px}
+.cs-chal-tile p{color:var(--fg2);font-size:15.5px;line-height:1.55;margin:0}
+.cs-polish{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.cs-polish li{position:relative;color:var(--fg2);font-size:15.5px;line-height:1.5;background:var(--bg2);border-radius:16px;padding:14px 16px 14px 38px}
+.cs-polish li::before{content:"";position:absolute;left:16px;top:20px;width:10px;height:6px;border-left:2px solid var(--blue);border-bottom:2px solid var(--blue);transform:rotate(-45deg)}
+@media(max-width:760px){.cs-chal{grid-template-columns:1fr}}
 .cs-stack{display:grid}
 .cs-row{display:grid;grid-template-columns:200px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--line);align-items:start}
 .cs-row h4{font-size:17px;font-weight:600;margin:0}
@@ -317,6 +325,8 @@ body.lock{overflow:hidden}
 .case[open] .cs-sec:nth-of-type(3){animation-delay:.2s}
 .case[open] .cs-sec:nth-of-type(4){animation-delay:.26s}
 .case[open] .cs-sec:nth-of-type(5){animation-delay:.32s}
+.case[open] .cs-sec:nth-of-type(6){animation-delay:.38s}
+.case[open] .cs-sec:nth-of-type(7){animation-delay:.44s}
 .case[open] .cs-foot{animation-delay:.36s}
 .car-track .slide{transition:transform .4s cubic-bezier(.2,.7,.2,1),opacity .4s}
 .car-track .slide:hover{transform:translateY(-6px)}
