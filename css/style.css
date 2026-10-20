@@ -350,6 +350,5 @@ body.lock{overflow:hidden}
 .off h2{font-size:clamp(28px,5vw,40px);letter-spacing:-.02em;margin:0 0 10px}
 .off .lead{margin:0 auto;max-width:460px;font-size:17px;color:var(--fg2)}
 .off .cta{margin-top:22px}
-.off-game{width:100%;height:auto;aspect-ratio:640/180;border-radius:16px;background:var(--bg2);border:1px solid var(--line);margin-bottom:22px;display:block;cursor:pointer;touch-action:manipulation;image-rendering:pixelated}
 .off-err{margin:16px 0 0;font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--fg2);letter-spacing:.05em}
 @media(prefers-reduced-motion:reduce){.off,.off-card{transition:opacity .2s,visibility .2s}.off-card{transform:none}}
