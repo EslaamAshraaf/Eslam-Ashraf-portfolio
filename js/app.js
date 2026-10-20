@@ -423,6 +423,19 @@
         done();
       }
     });
+    if (matchMedia('(hover: none), (max-width: 640px)').matches && 'IntersectionObserver' in window) {
+      var pObs = new IntersectionObserver(function (ens) {
+        ens.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          var ph = en.target, sibs = ph.parentNode.children;
+          setTimeout(function () { ph.classList.add('peek-on'); }, [].indexOf.call(sibs, ph) * 160);
+          pObs.unobserve(ph);
+        });
+      }, { threshold: 0.55 });
+      Array.prototype.forEach.call(document.querySelectorAll('.row .phone .peek, .vis .phone .peek'), function (pk) {
+        pObs.observe(pk.parentNode);
+      });
+    }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
