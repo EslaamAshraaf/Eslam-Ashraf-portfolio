@@ -423,7 +423,7 @@
         done();
       }
     });
-    if (matchMedia('(hover: none), (max-width: 640px)').matches && 'IntersectionObserver' in window) {
+    if ('IntersectionObserver' in window) {
       var pObs = new IntersectionObserver(function (ens) {
         ens.forEach(function (en) {
           if (!en.isIntersecting) return;
@@ -431,7 +431,7 @@
           setTimeout(function () { ph.classList.add('peek-on'); }, [].indexOf.call(sibs, ph) * 160);
           pObs.unobserve(ph);
         });
-      }, { threshold: 0.55 });
+      }, { threshold: 0.4 });
       Array.prototype.forEach.call(document.querySelectorAll('.row .phone .peek, .vis .phone .peek'), function (pk) {
         pObs.observe(pk.parentNode);
       });
