@@ -1,5 +1,5 @@
-var CACHE = 'eslam-portfolio-v1';
-var CORE = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/data.js', 'assets/Eslam_Ashraf_Selim_CV.pdf'];
+var CACHE = 'eslam-portfolio-v2';
+var CORE = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/data.js', 'assets/logo-mark.svg?v=2', 'assets/Eslam_Ashraf_Selim_CV.pdf'];
 
 self.addEventListener('install', function (e) {
   e.waitUntil(
