@@ -42,8 +42,8 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6
 .nav.min nav,.nav.min .pill{opacity:0;visibility:hidden;transform:scale(.92);pointer-events:none;transition:opacity .2s,transform .25s,visibility 0s .2s}
 .nav nav a:hover{color:var(--fg)}
 .brand{display:flex;align-items:center;gap:9px;font-size:17px;font-weight:700;letter-spacing:-.03em;white-space:nowrap}
-.mk{width:36px;height:32px;display:block;overflow:visible;filter:drop-shadow(0 2px 6px rgba(162,89,255,.3))}
-@keyframes fl{50%{transform:scaleX(.7)}}
+.mk{width:36px;height:20px;display:block;overflow:visible;filter:drop-shadow(0 2px 6px rgba(0,0,0,.2))}
+@keyframes fl{50%{transform:rotate(-5deg) scale(1.06)}}
 .brand:hover .mk{animation:fl .5s ease-in-out 2}
 @media(prefers-reduced-motion:reduce){.brand:hover .mk{animation:none}}
 .wm b{font-weight:700;background:linear-gradient(90deg,#2997ff,#a259ff 50%,#2997ff);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -51,7 +51,7 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6
 .pill:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(0,0,0,.5)}
 .pill:active{transform:scale(.97)}
 @media(max-width:640px){.nav nav{display:none}.nav .pill{display:none}.nav-m{display:grid}.nav-drop{display:flex}.nav.min .in{max-width:1024px;translate:none}.nav.min .brand{translate:none}}
-@media(max-width:400px){.brand{font-size:15px}.mk{width:30px;height:27px}}
+@media(max-width:400px){.brand{font-size:15px}.mk{width:30px;height:17px}}
 section{padding:clamp(72px,12vw,140px) 22px;position:relative}
 .w{max-width:1024px;margin:auto}
 .c{text-align:center}
