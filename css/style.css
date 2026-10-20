@@ -16,6 +16,18 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6
 .nav .brand{justify-self:start;grid-column:1;transition:translate .5s cubic-bezier(.2,.7,.2,1)}
 .nav.min .brand{translate:calc(50cqw - 50%) 0}
 .nav .pill{justify-self:end;grid-column:3}
+.nav-m{display:none;width:40px;height:40px;border-radius:50%;place-items:center;padding:0;border:1px solid var(--line);background:var(--nav);-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);cursor:pointer;color:var(--fg);transition:transform .2s,background .2s}
+.nav-m:hover{transform:scale(1.06)}
+.nav-m svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.nav-m .mn-x{display:none}
+.nav-m.on .mn-h{display:none}
+.nav-m.on .mn-x{display:block}
+.nav-drop{position:absolute;top:64px;right:12px;display:none;flex-direction:column;gap:2px;min-width:240px;padding:8px;border-radius:28px;background:var(--nav);border:1px solid var(--line);box-shadow:0 28px 70px -24px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(0,0,0,.04);-webkit-backdrop-filter:saturate(200%) blur(30px);backdrop-filter:saturate(200%) blur(30px);opacity:0;visibility:hidden;pointer-events:auto;transform:translateY(-10px) scale(.96);transform-origin:top right;transition:opacity .25s,transform .35s cubic-bezier(.2,.7,.2,1),visibility .3s}
+.nav-drop.open{opacity:1;visibility:visible;transform:none}
+.nav-drop a{padding:12px 16px;border-radius:18px;font-size:15px;font-weight:500;color:var(--fg);transition:background .2s}
+.nav-drop a:hover,.nav-drop a:focus-visible,.nav-drop a.on{background:var(--chip)}
+.nav-drop .m-cta{margin-top:8px;background:var(--btn-bg);color:#fff;text-align:center;border-radius:980px}
+.nav-drop .m-cta:hover{background:var(--btn-bg);filter:brightness(1.12)}
 .nav nav,.nav .pill{visibility:visible;transition:opacity .3s .15s,transform .35s .15s,visibility 0s .3s}
 .nav.min nav,.nav.min .pill{opacity:0;visibility:hidden;transform:scale(.92);pointer-events:none;transition:opacity .2s,transform .25s,visibility 0s .2s}
 .nav nav a:hover{color:var(--fg)}
@@ -28,7 +40,7 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6
 .pill{background:var(--fg);color:var(--bg);padding:5px 13px;border-radius:980px;font-weight:500;display:inline-block;transition:transform .2s cubic-bezier(.2,.7,.2,1),box-shadow .2s}
 .pill:hover{transform:translateY(-1px);box-shadow:0 8px 20px -10px rgba(0,0,0,.5)}
 .pill:active{transform:scale(.97)}
-@media(max-width:640px){.nav nav{display:none}}
+@media(max-width:640px){.nav nav{display:none}.nav .pill{display:none}.nav-m{display:grid;grid-column:3;justify-self:end}.nav-drop{display:flex}}
 section{padding:clamp(72px,12vw,140px) 22px;position:relative}
 .w{max-width:1024px;margin:auto}
 .c{text-align:center}
@@ -263,7 +275,7 @@ body.lock{overflow:hidden}
   .js .hero .eyebrow,.js .hero h1,.js .hero .lead,.js .hero .cta,.js .hero .row,
   .js .hero .row .phone,.js .grad,.js .wm b,
   .case[open] .cs-top,.case[open] .cs-sec,.case[open] .cs-foot{animation:none}
-  .tile,.info div,.tri>div,.car-track .slide,.nav nav a::after,.row .phone,.nav .in,.nav nav,.nav .pill,.nav .brand,.pkg-feats li{transition:none}
+  .tile,.info div,.tri>div,.car-track .slide,.nav nav a::after,.row .phone,.nav .in,.nav nav,.nav .pill,.nav .brand,.pkg-feats li,.nav-m,.nav-drop,.nav-drop a{transition:none}
   .tile:hover,.info div:hover,.tri>div:hover,.car-track .slide:hover{transform:none;box-shadow:none}
   .row .phone:hover{translate:none;scale:none}
   .cursor-glow{display:none}
