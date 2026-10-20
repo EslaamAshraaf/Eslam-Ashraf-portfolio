@@ -12,10 +12,10 @@ a:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:6
 .nav.min .in{max-width:212px;translate:calc(50% - 50cqw + 12px) 0}
 .nav.sc .in{box-shadow:0 16px 38px -24px rgba(0,0,0,.55)}
 .nav .in:hover{box-shadow:0 16px 38px -24px rgba(0,0,0,.55),0 0 0 4px rgba(41,151,255,.08);border-color:rgba(41,151,255,.45)}
-.nav nav{display:flex;gap:clamp(6px,2vw,18px);color:var(--fg2);justify-self:center}
-.nav .brand{justify-self:start;transition:translate .5s cubic-bezier(.2,.7,.2,1)}
+.nav nav{display:flex;gap:clamp(6px,2vw,18px);color:var(--fg2);justify-self:center;grid-column:2}
+.nav .brand{justify-self:start;grid-column:1;transition:translate .5s cubic-bezier(.2,.7,.2,1)}
 .nav.min .brand{translate:calc(50cqw - 50%) 0}
-.nav .pill{justify-self:end}
+.nav .pill{justify-self:end;grid-column:3}
 .nav nav,.nav .pill{visibility:visible;transition:opacity .3s .15s,transform .35s .15s,visibility 0s .3s}
 .nav.min nav,.nav.min .pill{opacity:0;visibility:hidden;transform:scale(.92);pointer-events:none;transition:opacity .2s,transform .25s,visibility 0s .2s}
 .nav nav a:hover{color:var(--fg)}
