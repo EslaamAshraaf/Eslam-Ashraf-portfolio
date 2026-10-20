@@ -115,6 +115,15 @@ h3{font-size:clamp(26px,3.6vw,40px);font-weight:700;letter-spacing:-.02em;line-h
 .pkg-stats b{display:block;font-size:34px;font-weight:700;letter-spacing:-.02em;background:linear-gradient(180deg,#fff,#8ab6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
 .pkg-stats span{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#8e8e93}
 @media(max-width:860px){.pkg{grid-template-columns:1fr}.pkg-stats{flex-direction:row}.pkg-stats div{flex:1}}
+.tk{display:flex;flex-direction:column;gap:20px}
+.tk-row{display:grid;grid-template-columns:190px 1fr;gap:18px;align-items:start}
+.tk-cat{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--fg2);padding-top:30px}
+.tk-grid{display:flex;flex-wrap:wrap;gap:12px}
+.tk-tile{width:108px;height:98px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:18px;transition:transform .25s cubic-bezier(.2,.7,.2,1),box-shadow .25s,border-color .25s}
+.tk-tile:hover{transform:translateY(-4px);box-shadow:0 18px 40px -20px rgba(0,0,0,.3),0 0 0 1px rgba(41,151,255,.35);border-color:rgba(41,151,255,.45)}
+.tk-tile i,.tk-tile .tk-svg{font-size:30px;line-height:1}
+.tk-tile span{font-size:13px;font-weight:500;color:var(--fg);text-align:center}
+@media(max-width:760px){.tk-row{grid-template-columns:1fr;gap:10px}.tk-cat{padding-top:0}}
 .links{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 .vis{display:flex;justify-content:center}
 #work .w{max-width:1240px}
@@ -241,7 +250,7 @@ body.lock{overflow:hidden}
 .btn:focus-visible,.btn2:focus-visible,.pill:focus-visible,.cs-x:focus-visible,.car-b:focus-visible,.shot-btn:focus-visible,.lb-x:focus-visible{outline:2px solid var(--cta);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){
   .case[open],.case[open]::backdrop{animation:none}
-  .card,.card:hover,.card:focus-within,.cs-open .arw,.scr .peek,.pill,.pill:hover,.btn,.btn:hover,.btn2,.btn2:hover,.car-b,.lb-x{transition:none;transform:none;box-shadow:none}
+  .card,.card:hover,.card:focus-within,.cs-open .arw,.scr .peek,.pill,.pill:hover,.btn,.btn:hover,.btn2,.btn2:hover,.car-b,.lb-x,.tk-tile{transition:none;transform:none;box-shadow:none}
 }
 
 /* ---------- Motion system ---------- */
@@ -281,7 +290,7 @@ body.lock{overflow:hidden}
   .js .hero .eyebrow,.js .hero h1,.js .hero .lead,.js .hero .cta,.js .hero .row,
   .js .hero .row .phone,.js .grad,.js .wm b,
   .case[open] .cs-top,.case[open] .cs-sec,.case[open] .cs-foot{animation:none}
-  .tile,.info div,.tri>div,.car-track .slide,.nav nav a::after,.row .phone,.nav .in,.nav nav,.nav .pill,.nav .brand,.pkg-feats li,.nav-m,.nav-drop,.nav-drop a{transition:none}
+  .tile,.info div,.tri>div,.car-track .slide,.nav nav a::after,.row .phone,.nav .in,.nav nav,.nav .pill,.nav .brand,.pkg-feats li,.nav-m,.nav-drop,.nav-drop a,.tk-tile{transition:none}
   .tile:hover,.info div:hover,.tri>div:hover,.car-track .slide:hover{transform:none;box-shadow:none}
   .row .phone:hover{translate:none;scale:none}
   .cursor-glow{display:none}
