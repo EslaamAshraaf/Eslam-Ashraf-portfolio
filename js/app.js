@@ -405,6 +405,24 @@
       });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeDrop(); });
     }
+    var cpy = document.querySelector('.ct-cpy');
+    if (cpy) cpy.addEventListener('click', function () {
+      var txt = cpy.getAttribute('data-copy') || '';
+      var done = function () {
+        cpy.classList.add('done');
+        setTimeout(function () { cpy.classList.remove('done'); }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(done, done);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+        done();
+      }
+    });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
