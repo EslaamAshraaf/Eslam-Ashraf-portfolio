@@ -53,6 +53,7 @@ export default {
       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
+        signal: AbortSignal.timeout(20000),
         body: JSON.stringify({
           systemInstruction: { parts: [{ text: PORTFOLIO_CONTEXT }] },
           contents,
@@ -60,11 +61,16 @@ export default {
         })
       });
       const result = await response.json();
-      if (!response.ok) return json({ error: response.status === 429 ? 'The assistant is busy. Please try again shortly.' : 'The assistant is temporarily unavailable.' }, response.status === 429 ? 429 : 502, origin);
+      if (!response.ok) {
+        console.error('Gemini API returned status', response.status);
+        return json({ error: response.status === 429 ? 'The assistant is busy. Please try again shortly.' : 'The assistant is temporarily unavailable.' }, response.status === 429 ? 429 : 502, origin);
+      }
       const answer = (result.candidates || []).flatMap(candidate => candidate.content && candidate.content.parts || []).map(part => part.text || '').join('').trim();
       if (!answer) return json({ error: 'The assistant could not form an answer. Please try again.' }, 502, origin);
       return json({ answer }, 200, origin);
-    } catch (_) {
+    } catch (error) {
+      if (error && error.name === 'TimeoutError') return json({ error: 'The assistant took too long to respond. Please try again.' }, 504, origin);
+      console.error('Gemini API request failed', error && error.name || 'unknown error');
       return json({ error: 'Could not reach the assistant. Please try again.' }, 502, origin);
     }
   }

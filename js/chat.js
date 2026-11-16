@@ -43,11 +43,14 @@
     input.disabled = true;
     form.querySelector('button').disabled = true;
     status.textContent = 'Thinking…';
+    var controller = new AbortController();
+    var requestTimer = window.setTimeout(function () { controller.abort(); }, 25000);
     try {
       var response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: question, history: history.slice(-6) })
+        body: JSON.stringify({ message: question, history: history.slice(-6) }),
+        signal: controller.signal
       });
       var data = await response.json();
       if (!response.ok) throw new Error(data.error || 'The assistant could not answer right now.');
@@ -58,8 +61,11 @@
       history = history.slice(-6);
       status.textContent = '';
     } catch (error) {
-      status.textContent = error.message || 'Connection problem. Please try again.';
+      status.textContent = error.name === 'AbortError'
+        ? 'The assistant took too long to respond. Please try again.'
+        : (error.message || 'Connection problem. Please try again.');
     } finally {
+      window.clearTimeout(requestTimer);
       input.disabled = false;
       form.querySelector('button').disabled = false;
       input.focus();
