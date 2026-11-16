@@ -23,3 +23,12 @@ Open `index.html` in a browser, or serve the folder: `python3 -m http.server 800
 
 ## Deploy
 Upload the whole folder to Netlify (drag & drop), Vercel, Cloudflare Pages or GitHub Pages. The details screens use hash routes, so no server configuration is needed.
+
+## Portfolio AI assistant (GitHub Pages + Cloudflare Worker)
+1. In Cloudflare, create a Worker and paste the contents of `worker/index.js` into its editor, then deploy it.
+2. In the Worker settings, store the Gemini key as an encrypted secret named `GEMINI_API_KEY` (never put it in this repository).
+3. Copy the Worker's `workers.dev` URL and add `/api/chat`; put the full URL in `js/chat-config.js` as `window.PORTFOLIO_CHAT_ENDPOINT`.
+4. Deploy this portfolio to GitHub Pages. The Worker currently allows requests from `https://eslaamashraaf.github.io`; update `SITE_ORIGIN` in `worker/index.js` if the site moves to another origin.
+5. Configure a Cloudflare rate limit for the Worker route to protect the Gemini quota. CORS restricts browser access to the portfolio origin but is not a replacement for rate limiting.
+
+The Worker uses Gemini `generateContent` and contains the public portfolio facts used to ground answers. Review/update `PORTFOLIO_CONTEXT` in `worker/index.js` when portfolio details change. Free model quotas and availability can change.

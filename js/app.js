@@ -35,13 +35,12 @@
   }
   function card(p) {
     return '<article class="card rv"><a class="card-link" href="#/project/' + p.id + '" aria-label="View ' + esc(p.name) + ' case study">' +
-      '<div class="vis">' +
-      '<div class="phone"><div class="scr ' + p.g + ' launch">' +
-      '<img src="' + p.icon + '" alt="' + esc(p.name) + ' app icon" loading="lazy">' +
-      '<img class="peek" src="' + (p.cover || p.images[0]) + '" alt="" aria-hidden="true">' +
-      '</div></div>' +
-      '<h3>' + esc(p.name) + '</h3>' +
+      '<div class="card-art ' + p.g + '">' +
+      '<div class="card-screen"><img src="' + (p.cover || p.images[0]) + '" alt="' + esc(p.name) + ' app preview" loading="lazy"></div>' +
+      '<span class="card-number" aria-hidden="true">' + String(P.indexOf(p) + 1).padStart(2, '0') + '</span>' +
       '</div>' +
+      '<div class="card-info"><div><h3>' + esc(p.name) + '</h3><p>' + esc(p.kind) + '</p></div>' +
+      '<span class="card-arrow" aria-hidden="true">↗</span></div>' +
       '</a></article>';
   }
 
@@ -230,6 +229,7 @@
   }
 
   addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.getElementById('cv-preview').open) return;
     if (e.key === 'Escape' && dlg.open) {
       if (lbOpen) { closeLb(); return; }
       if (!native) requestClose();
@@ -343,7 +343,53 @@
   }
 
   function init() {
+    var cv = document.getElementById('cv-preview');
+    var cvOpener = null;
+    var cvWasOpen = false;
+    Array.prototype.forEach.call(document.querySelectorAll('.cv-preview-open'), function (button) {
+      button.addEventListener('click', function () {
+        cvOpener = button;
+        if (typeof cv.showModal === 'function') cv.showModal(); else cv.setAttribute('open', '');
+        document.body.classList.add('lock');
+        cv.querySelector('.cv-close').focus();
+      });
+    });
+    function closeCv() {
+      if (!cv.open) return;
+      if (typeof cv.close === 'function') cv.close(); else cv.removeAttribute('open');
+      document.body.classList.remove('lock');
+      if (cvOpener) cvOpener.focus();
+    }
+    cv.addEventListener('cancel', function () {
+      cvWasOpen = true;
+      document.body.classList.remove('lock');
+    });
+    cv.addEventListener('close', function () {
+      document.body.classList.remove('lock');
+      if (cvWasOpen && cvOpener) cvOpener.focus();
+      cvWasOpen = false;
+    });
+    cv.querySelector('.cv-close').addEventListener('click', closeCv);
+    cv.addEventListener('click', function (e) { if (e.target === cv) closeCv(); });
     document.getElementById('cards').innerHTML = P.map(card).join('');
+    var search = document.getElementById('project-search-input');
+    var empty = document.getElementById('project-empty');
+    if (search) search.addEventListener('input', function () {
+      var query = search.value.trim().toLocaleLowerCase();
+      var shown = 0;
+      Array.prototype.forEach.call(document.querySelectorAll('#cards .card'), function (el, i) {
+        var p = P[i], match = !query || (p.name + ' ' + p.kind).toLocaleLowerCase().indexOf(query) !== -1;
+        el.hidden = !match;
+        if (match) shown++;
+      });
+      empty.hidden = shown !== 0;
+    });
+    addEventListener('keydown', function (e) {
+      if (cv.open) return;
+      if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName) && !e.metaKey && !e.ctrlKey && !e.altKey) {
+        e.preventDefault(); if (search) search.focus();
+      }
+    });
     Array.prototype.forEach.call(document.querySelectorAll('#cards .card'), function (c, i) {
       c.style.transitionDelay = Math.min(i, 4) * .07 + 's';
     });
