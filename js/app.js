@@ -34,12 +34,15 @@
       '<b>' + esc(p.name) + '</b><span>' + esc(p.kind) + '</span>' + pk + '</div></div>';
   }
   function card(p) {
-    return '<article class="card rv"><div><p class="kick">' + esc(p.kind) + '</p><h3>' + esc(p.name) + '</h3>' +
-      '<p class="d">' + esc(p.summary) + '</p><ul>' + p.highlights.map(function (h) { return '<li>' + esc(h) + '</li>'; }).join('') + '</ul>' +
-      '<div class="chips">' + p.chips.map(function (c) { return '<span>' + esc(c) + '</span>'; }).join('') + '</div>' +
-      '<div class="links"><a class="btn cs-open" href="#/project/' + p.id + '" aria-haspopup="dialog" aria-controls="case-study" aria-expanded="false">View case study <span class="arw" aria-hidden="true">→</span></a>' +
-      a(p.links.play, 'lnk', 'Google Play') + a(p.links.store, 'lnk', 'App Store') + '</div></div>' +
-      '<div class="vis">' + launch(p, true) + '</div></article>';
+    return '<article class="card rv"><a class="card-link" href="#/project/' + p.id + '" aria-label="View ' + esc(p.name) + ' case study">' +
+      '<div class="vis">' +
+      '<div class="phone"><div class="scr ' + p.g + ' launch">' +
+      '<img src="' + p.icon + '" alt="' + esc(p.name) + ' app icon" loading="lazy">' +
+      '<img class="peek" src="' + (p.cover || p.images[0]) + '" alt="" aria-hidden="true">' +
+      '</div></div>' +
+      '<h3>' + esc(p.name) + '</h3>' +
+      '</div>' +
+      '</a></article>';
   }
 
   function caseStudy(p) {
