@@ -259,7 +259,7 @@
     if (!items.length || !('IntersectionObserver' in window)) return;
     function set(active) {
       items.forEach(function (x) {
-        if (x.el === active.el) { x.l.classList.add('on'); x.l.setAttribute('aria-current', 'true'); }
+        if (x.el === active.el) { x.l.classList.add('on'); x.l.setAttribute('aria-current', 'page'); }
         else { x.l.classList.remove('on'); x.l.removeAttribute('aria-current'); }
       });
     }
